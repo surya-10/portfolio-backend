@@ -20,13 +20,14 @@ router.post("/get-data", async(req, res)=>{
                 pass:password
             }
         }
+        // console.log(username)
         let tranporter = nodemailer.createTransport(config);
 
         let Mailgen = new mailgen({
             theme:"default",
             product:{
                 name:"Support",
-                link:"#"
+                link:"https://my-portfolio-surya.netlify.app"
             }
         })
 
@@ -38,6 +39,7 @@ router.post("/get-data", async(req, res)=>{
                     data:[
                         {
                             username:userData.name,
+                            userEamil:userData.email,
                             description:userData.msg
                         }
                     ]
@@ -49,7 +51,7 @@ router.post("/get-data", async(req, res)=>{
         let mail = Mailgen.generate(response)
         let sendTo = {
             from:username,
-            to:userData.email,
+            to:username,
             subject:"User comment",
             html:mail
         }
