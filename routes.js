@@ -8,7 +8,7 @@ let router = express.Router();
 router.post("/get-data", async(req, res)=>{
     try {
         let userData = req.body;
-        console.log(userData)
+        // console.log(userData)
         if(!userData){
             return res.status(400).json({msg:"empty", response:false})
         }
